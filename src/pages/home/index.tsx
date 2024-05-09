@@ -1,5 +1,6 @@
-import * as React from 'react';
 
+import * as React from "react";
+import Layout from "@/components/layout";
 
 interface IHomeProps {}
 

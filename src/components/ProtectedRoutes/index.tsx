@@ -9,22 +9,19 @@ import {useAuthState} from "react-firebase-hooks/auth";
 
 interface IProtectedRoutesProps {}
 
-const ProtectedRoutes: React.FunctionComponent<IProtectedRoutesProps> = (props) => {
+const ProtectedRoutes: React.FunctionComponent<IProtectedRoutesProps> = () => {
   const auth = getAuth();
-  const { user, loading } = useUserAuth(auth); // Assuming useUserAuth returns user and loading state
-
+  const [user, loading] = useAuthState(auth);
   const location = useLocation();
 
-  // Render a loading indicator while authentication data is being fetched
   if (loading) {
     return <div>...Loading</div>;
   }
 
-  // Render Outlet if user is authenticated, otherwise redirect to login page
   return user ? (
     <Outlet />
   ) : (
-    <Navigate to="/login" state={{ from: location }} replace />
+    <Navigate to="/login" state={{ from: location }} />
   );
 };
 
