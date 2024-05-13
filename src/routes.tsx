@@ -8,6 +8,8 @@ import Post from "./pages/Post";
 import Profile from "./pages/profile";
 import Signup from "./pages/signup";
 import ProtectedRoutes from "./components/ProtectedRoutes";
+import MyPhotos from "./pages/myphotos";
+
 export const router = createBrowserRouter([
     {
       element: <ProtectedRoutes/>,
@@ -42,6 +44,11 @@ export const router = createBrowserRouter([
           element: <Profile/>,
           errorElement: <Error/>,
         },
+        {
+          path: "/MyPhotos",
+          element: <MyPhotos/>,
+          errorElement: <Error/>,
+        }
       ],
     },
     {

@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import * as LR from "@uploadcare/blocks";
+import { OutputFileEntry } from "@uploadcare/blocks";
+import blocksStyles from "@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url";
+import { FileEntry } from "@/types";
 
-
-
-
-
+LR.registerBlocks(LR);
 
 interface IFileUploaderProps {
   fileEntry: FileEntry;
@@ -63,7 +64,7 @@ const FileUploader: React.FunctionComponent<IFileUploaderProps> = ({
     <div>
       <lr-config
         ctx-name="my-uploader"
-        pubkey="74e63f3a7042561655f6"
+        pubkey="cb9c2bc15ba745dda33c"
         multiple={true}
         confirmUpload={false}
         removeCopyright={true}
