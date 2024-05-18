@@ -22,15 +22,10 @@ type AuthContextData = {
   googleSignIn: typeof googleSignIn;
 };
 
-const logIn = async (email: string, password: string) => {
-  try {
-    const response = await signInWithEmailAndPassword(auth, email, password);
-    return response;
-  } catch (error) {
-    console.error("Login failed:", error);
-    throw error;  // rethrow the error if you need to handle it in a component
-  }
+const logIn = (email: string, password: string) => {
+  return signInWithEmailAndPassword(auth, email, password);
 };
+
 const signUp = (email: string, password: string) => {
   return createUserWithEmailAndPassword(auth, email, password);
 };
@@ -63,16 +58,13 @@ export const UserAuthProvider: React.FunctionComponent<
       if (user) {
         console.log("The logged in user state is : ", user);
         setUser(user);
-      } else {
-        setUser(null);
       }
+
+      return () => {
+        unsubscribe();
+      };
     });
-  
-    return () => {
-      unsubscribe();  // This function will be called on component unmount
-    };
-  }, []);  // Empty dependency array means this effect will only run once on mount
-  
+  });
   const value: AuthContextData = {
     user,
     logIn,

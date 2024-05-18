@@ -9,6 +9,7 @@ import Profile from "./pages/profile";
 import Signup from "./pages/signup";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import MyPhotos from "./pages/myphotos";
+import Odds from "./components/odds";
 
 export const router = createBrowserRouter([
     {
@@ -55,6 +56,11 @@ export const router = createBrowserRouter([
       path: "/Login",
       element: <Login/>,
       errorElement: <Error/>,
+    },
+    {
+     /* path: "/Odds",
+      element: <Odds/>,
+      errorElement: <Error/>,*/
     },
     {
       path: "/Signup",
